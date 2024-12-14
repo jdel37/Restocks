@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { Menu, X, UserRound, ShoppingBag, Search } from "lucide-react";
 
 function PhoneNavbar() {

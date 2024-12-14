@@ -1,4 +1,4 @@
-import React from 'react';
+
 import CustomeNavBar from '../NavBar/custome-NavBar.tsx';
 import Footer from '../Footer/Footer.tsx';
 import BgImage from '../../assets/bgbig.jpeg';

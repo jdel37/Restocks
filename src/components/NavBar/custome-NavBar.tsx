@@ -1,4 +1,4 @@
-import React from "react";
+
 import { ShoppingBag } from "lucide-react";
 import { Search } from "lucide-react";
 import { UserRound } from "lucide-react";
