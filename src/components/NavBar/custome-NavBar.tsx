@@ -1,4 +1,3 @@
-
 import { ShoppingBag } from "lucide-react";
 import { Search } from "lucide-react";
 import { UserRound } from "lucide-react";
@@ -15,14 +14,11 @@ function CustomeNavBar() {
     <div className="hidden md:flex bg-black w-full text-white items-center justify-between fixed top-0 left-0 px-4 py-2 z-50">
       {/* Logo */}
       <a href="/">
-      <div className="flex items-center flex-grow justify-center">
-       
-        <h1 className="text-[#db4a2b] text-[16px] sm:text-[20px] md:text-[28px] lg:text-[36px] font-black whitespace-nowrap">
-          RESTOCKS
-        </h1>
-       
-       
-      </div>
+        <div className="flex items-center flex-grow justify-center">
+          <h1 className="text-[#db4a2b] text-[16px] sm:text-[20px] md:text-[28px] lg:text-[36px] font-black whitespace-nowrap">
+            RESTOCKS
+          </h1>
+        </div>
       </a>
 
       {/* Menubar centrado */}
@@ -34,7 +30,7 @@ function CustomeNavBar() {
               File
               <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#db4a2b] transition-all duration-300 group-hover:w-full"></span>
             </MenubarTrigger>
-            <MenubarContent className="mt-2 p-2 bg-black text-white rounded-md shadow-md w-auto">
+            <MenubarContent className="mt-2 p-2 bg-black text-white rounded-md border-none w-auto">
               <MenubarItem>New Tab</MenubarItem>
               <MenubarItem>New Window</MenubarItem>
               <MenubarItem>Share</MenubarItem>
@@ -48,7 +44,7 @@ function CustomeNavBar() {
               Colecciones
               <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#db4a2b] transition-all duration-300 group-hover:w-full"></span>
             </MenubarTrigger>
-            <MenubarContent className="mt-2 p-2 bg-black text-white rounded-md shadow-md w-auto">
+            <MenubarContent className="mt-2 p-2 bg-black text-white rounded-md border-none w-auto">
               <MenubarItem>Hombres</MenubarItem>
               <MenubarItem>Mujeres</MenubarItem>
               <MenubarItem>Accesorios</MenubarItem>
@@ -62,7 +58,7 @@ function CustomeNavBar() {
               Categoría
               <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#db4a2b] transition-all duration-300 group-hover:w-full"></span>
             </MenubarTrigger>
-            <MenubarContent className="mt-2 p-2 bg-black text-white rounded-md shadow-md w-auto">
+            <MenubarContent className="mt-2 p-2 bg-black text-white rounded-md border-none w-auto">
               <MenubarItem>Hombres</MenubarItem>
               <MenubarItem>Mujeres</MenubarItem>
               <MenubarItem>Accesorios</MenubarItem>

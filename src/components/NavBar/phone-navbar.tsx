@@ -1,25 +1,30 @@
-import  { useState } from "react";
+import { useState } from "react";
 import { Menu, X, UserRound, ShoppingBag, Search } from "lucide-react";
 
 function PhoneNavbar() {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   return (
-    <div className="md:hidden flex bg-black w-full text-white items-center justify-between fixed top-0 left-0 px-4 py-2 z-50">
+    <div className="md:hidden flex bg-black w-full text-white items-center justify-between fixed top-0 left-0 px-4 py-2 z-50 relative">
       {/* Menú hamburguesa a la izquierda */}
-      <div className="flex items-center" onClick={() => setIsNavOpen((prev) => !prev)}>
-        <Menu className="w-[24px] h-[24px] cursor-pointer" />
+      <div className="flex items-center justify-start z-10">
+        <Menu
+          className="w-[24px] h-[24px] cursor-pointer"
+          onClick={() => setIsNavOpen((prev) => !prev)}
+        />
       </div>
 
       {/* Título centrado */}
-      <a href="/" className="flex-grow flex justify-center">
-        <h1 className="text-[#db4a2b] text-[20px] font-black whitespace-nowrap">
-          RESTOCKS
-        </h1>
-      </a>
+    
+        <a href="/" className="text-[#db4a2b] text-[20px] font-black whitespace-nowrap items-center justify-center">
+          <h1 className="text-[#db4a2b] text-[20px] font-black whitespace-nowrap items-center justify-center">
+            RESTOCKS
+          </h1>
+        </a>
+     
 
       {/* Íconos a la derecha */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-center justify-end gap-4 z-10">
         <UserRound className="w-[20px] h-[20px] cursor-pointer" />
         <Search className="w-[20px] h-[20px] cursor-pointer" />
         <ShoppingBag className="w-[20px] h-[20px] cursor-pointer" />

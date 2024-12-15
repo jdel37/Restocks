@@ -1,0 +1,6 @@
+/* Elimina bordes y sombras del menú */
+.custom-menubar-content {
+    border: none !important;
+    box-shadow: none !important;
+  }
+  
