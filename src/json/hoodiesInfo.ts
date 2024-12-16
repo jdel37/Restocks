@@ -7,7 +7,20 @@ import Second2 from "../assets/second2.png";
 import Third3 from "../assets/third2.png";
 import Four4 from "../assets/four2.png";
 
-const Cards = [
+// Define the types for each card
+interface Card {
+  id: string;
+  S: boolean;
+  M: boolean;
+  L: boolean;
+  XL: boolean;
+  imageSrc: string;
+  hoverImageSrc: string;
+  priceProduct: string;
+  nameProduct: string;
+}
+
+const Cards: Card[] = [
   {
     id: "1",
     S: true,

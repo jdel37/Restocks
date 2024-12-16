@@ -1,7 +1,19 @@
 import { motion } from "framer-motion";
-import Card from "../Porduct-Card/Card.js";
-import Cards from "../../json/hoodiesInfo.js";
+import Card from "../Porduct-Card/Card";
+import Cards from "../../json/hoodiesInfo";
 import { Link } from "react-router-dom";
+
+// Define the types for the hoodie card
+interface HoodieCard {
+  priceProduct: string; // Change to string to match the Cards array
+  nameProduct: string;
+  imageSrc: string;
+  hoverImageSrc: string;
+  S: boolean; // Changed to boolean, assuming availability of sizes (true/false)
+  M: boolean;
+  L: boolean;
+  XL: boolean;
+}
 
 function Hoodies() {
   return (
@@ -10,7 +22,7 @@ function Hoodies() {
         Featured Products
       </h2>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
-        {Cards.map((card, index) => {
+        {Cards.map((card: HoodieCard, index: number) => {
           const baseDuration = 0.7;
           const duration = baseDuration - Math.min(index * 0.05, 0.3);
 

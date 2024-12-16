@@ -8,10 +8,7 @@ import Typewriter from "typewriter-effect";
 
 function Home() {
   const [showAnimation, setShowAnimation] = useState(false);
-  const [size, setSize] = useState(null); // Estado para la talla seleccionada
-  const [comments, setComments] = useState(""); // Estado para comentarios
-  const [quantity, setQuantity] = useState(1); // Estado para la cantidad
-
+ 
   useEffect(() => {
     // Mostrar la animación después de 300ms
     const timer = setTimeout(() => {
@@ -21,13 +18,7 @@ function Home() {
     return () => clearTimeout(timer); // Limpiar el temporizador si el componente se desmonta
   }, []);
 
-  const handleAddToCart = () => {
-    alert(`Agregado al carrito:
-Talla: ${size || "No seleccionada"}
-Comentarios: ${comments}
-Cantidad: ${quantity}
-Precio Total: $${160000 * quantity} COP`);
-  };
+  
 
   return (
     <div className="flex flex-col justify-start w-full">

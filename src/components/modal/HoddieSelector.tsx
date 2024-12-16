@@ -1,26 +1,46 @@
-
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
+
+interface LocationState {
+  price: number;
+  name: string;
+  imageSrc: string;
+  hoverImageSrc: string;
+  S: boolean;
+  M: boolean;
+  L: boolean;
+  XL: boolean;
+}
+
+interface AvailableSize {
+  size: "S" | "M" | "L" | "XL";
+  available: boolean;
+}
+
 function HoodieSelector() {
   const location = useLocation();
-  const { price, name, imageSrc, hoverImageSrc, S, M, L, XL } = location.state || {};
+  const { price, name, imageSrc, hoverImageSrc, S, M, L, XL } = location.state as LocationState;
 
-  // Estados locales
-  const [selectedSize, setSelectedSize] = useState("");
-  const [comments, setComments] = useState("");
-  const [quantity, setQuantity] = useState(1);
-  const [mainImage, setMainImage] = useState(imageSrc || "https://via.placeholder.com/400x500");
-  const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
-  const [showZoom, setShowZoom] = useState(false);
+  // Local state
+  const [selectedSize, setSelectedSize] = useState<string>("");
+  const [comments, setComments] = useState<string>("");
+  const [quantity, setQuantity] = useState<number>(1);
+  const [mainImage, setMainImage] = useState<string>(imageSrc || "https://via.placeholder.com/400x500");
+  const [zoomPosition, setZoomPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+  const [showZoom, setShowZoom] = useState<boolean>(false);
 
-  const handleMouseOrTouchMove = (e, rect) => {
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+  // Function to handle mouse or touch move event
+  const handleMouseOrTouchMove = (
+    e: React.MouseEvent | React.TouchEvent,
+    rect: DOMRect
+  ) => {
+    const clientX = e instanceof TouchEvent ? e.touches[0].clientX : (e as React.MouseEvent).clientX;
+    const clientY = e instanceof TouchEvent ? e.touches[0].clientY : (e as React.MouseEvent).clientY;
 
     const x = ((clientX - rect.left) / rect.width) * 100;
     const y = ((clientY - rect.top) / rect.height) * 100;
 
-    // Restringir el movimiento al área de la imagen (0% - 100%)
+    // Restrict the movement to the image area (0% - 100%)
     if (x >= 0 && x <= 100 && y >= 0 && y <= 100) {
       setZoomPosition({ x, y });
       setShowZoom(true);
@@ -29,12 +49,12 @@ function HoodieSelector() {
     }
   };
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = (e: React.MouseEvent) => {
     const rect = e.currentTarget.getBoundingClientRect();
     handleMouseOrTouchMove(e, rect);
   };
 
-  const handleTouchMove = (e) => {
+  const handleTouchMove = (e: React.TouchEvent) => {
     const rect = e.currentTarget.getBoundingClientRect();
     handleMouseOrTouchMove(e, rect);
   };
@@ -47,8 +67,8 @@ function HoodieSelector() {
     setShowZoom(false);
   };
 
-  // Tallas disponibles con valores predeterminados si no están definidos
-  const availableSizes = [
+  // Available sizes with default values
+  const availableSizes: AvailableSize[] = [
     { size: "S", available: S },
     { size: "M", available: M },
     { size: "L", available: L },
@@ -57,7 +77,7 @@ function HoodieSelector() {
 
   return (
     <div className="flex flex-col md:flex-row gap-8 p-6 font-sans mt-20 mr-8">
-      {/* Lado Izquierdo: Imagen principal y miniaturas */}
+      {/* Left Side: Main image and thumbnails */}
       <div className="flex-1 relative">
         <div
           className="flex justify-center relative overflow-hidden group"
@@ -73,14 +93,14 @@ function HoodieSelector() {
             alt={name || "Producto"}
             className="w-full max-w-md object-cover rounded-md"
           />
-          {/* Ventana de Zoom */}
+          {/* Zoom Window */}
           {showZoom && (
             <div
               className="absolute w-40 h-40 bg-no-repeat bg-cover border-2 border-gray-300 rounded-md pointer-events-none"
               style={{
                 backgroundImage: `url(${mainImage})`,
                 backgroundPosition: `${zoomPosition.x}% ${zoomPosition.y}%`,
-                backgroundSize: "200%", // Nivel de zoom
+                backgroundSize: "200%", // Zoom level
                 top: `${zoomPosition.y}%`,
                 left: `${zoomPosition.x}%`,
                 transform: "translate(-50%, -50%)",
@@ -93,7 +113,7 @@ function HoodieSelector() {
             <img
               key={index}
               src={img || "https://via.placeholder.com/80x100"}
-              alt={`Miniatura ${index}`}
+              alt={`Thumbnail ${index}`}
               className="w-20 h-24 border border-gray-300 cursor-pointer hover:border-black"
               onClick={() => setMainImage(img || "https://via.placeholder.com/400x500")}
             />
@@ -101,9 +121,9 @@ function HoodieSelector() {
         </div>
       </div>
 
-      {/* Lado Derecho: Detalles */}
+      {/* Right Side: Product Details */}
       <div className="flex-1 flex flex-col gap-6">
-        {/* Nombre del producto */}
+        {/* Product Name */}
         <div>
           <h1 className="text-2xl font-bold text-gray-900">
             {name || "Suéter Con Cremallera"}
@@ -111,12 +131,12 @@ function HoodieSelector() {
           <p className="text-gray-500 mt-1">Cremallera Rib</p>
         </div>
 
-        {/* Precio */}
+        {/* Price */}
         <p className="text-xl font-semibold text-gray-900">
           {price ? `$ ${price}.00 COP` : "$ 160,000.00 COP"}
         </p>
 
-        {/* Tallas */}
+        {/* Sizes */}
         <div>
           <p className="font-medium text-gray-700 mb-2">
             TALLAS <span className="text-gray-400 ml-1">(Obligatorio)</span>
@@ -147,7 +167,7 @@ function HoodieSelector() {
           </div>
         </div>
 
-        {/* Comentarios */}
+        {/* Comments */}
         <div>
           <p className="font-medium text-gray-700 mb-2">Comentarios</p>
           <textarea
@@ -158,7 +178,7 @@ function HoodieSelector() {
           ></textarea>
         </div>
 
-        {/* Cantidad */}
+        {/* Quantity */}
         <div className="flex items-center gap-4">
           <button
             onClick={() => setQuantity((prev) => Math.max(prev - 1, 1))}
@@ -175,14 +195,14 @@ function HoodieSelector() {
           </button>
         </div>
 
-        {/* Botón Agregar */}
+        {/* Add to Cart Button */}
         <button
           className="w-full bg-gray-800 text-white py-2 rounded-md font-semibold hover:bg-gray-700 transition"
         >
           Agregar
         </button>
 
-        {/* Precio Total */}
+        {/* Total Price */}
         <p className="text-right text-gray-700 font-medium">
           {`$ ${(price || 160000) * quantity}.00 COP`}
         </p>
