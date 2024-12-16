@@ -5,7 +5,8 @@ import CustomeNavBar from "./components/NavBar/custome-NavBar";
 import PhoneNavbar from "./components/NavBar/phone-navbar";
 import './App.css'
 import Footer from "./components/Footer/Footer";
-
+import HoddieSelector from "./components/modal/HoddieSelector";
+import { path } from "path";
 
 function App() {
   
@@ -17,7 +18,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="about" element={<About />} />
-   
+      <Route path="/hoodie/:id" element={<HoddieSelector/>}/>
     </Routes>
     <Footer />
   </div>
