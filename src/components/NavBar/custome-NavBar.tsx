@@ -1,6 +1,7 @@
 import { ShoppingBag } from "lucide-react";
 import { Search } from "lucide-react";
 import { UserRound } from "lucide-react";
+import { Link } from 'react-router-dom';
 import {
   Menubar,
   MenubarContent,
@@ -11,10 +12,10 @@ import {
 
 function CustomeNavBar() {
   return (
-    <div className="hidden md:flex bg-black w-full text-white items-center justify-between fixed top-0 left-0 px-4 py-2 z-50">
+    <div className="hidden md:flex bg-[#141414] w-full text-white items-center justify-between fixed top-0 left-0 px-4 py-2 z-50">
       {/* Logo */}
       <a href="/">
-        <div className="flex items-center flex-grow justify-center">
+        <div className="flex items-center">
           <h1 className="text-[#db4a2b] text-[16px] sm:text-[20px] md:text-[28px] lg:text-[36px] font-black whitespace-nowrap">
             RESTOCKS
           </h1>
@@ -27,42 +28,76 @@ function CustomeNavBar() {
           {/* Menú 1 */}
           <MenubarMenu>
             <MenubarTrigger className="text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] relative group text-center">
-              File
+              Accesorios
               <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#db4a2b] transition-all duration-300 group-hover:w-full"></span>
             </MenubarTrigger>
-            <MenubarContent className="mt-2 p-2 bg-black text-white rounded-md border-none w-auto">
-              <MenubarItem>New Tab</MenubarItem>
-              <MenubarItem>New Window</MenubarItem>
-              <MenubarItem>Share</MenubarItem>
-              <MenubarItem>Print</MenubarItem>
+            <MenubarContent
+              align="center"
+              sideOffset={10}
+              className="mt-2 p-2 bg-[#141414] text-white rounded-sm border-none w-auto"
+            >
+              <MenubarItem className="hover:bg-[#db4a2b] px-2 py-1 rounded-md transition duration-300">
+                Hombres
+              </MenubarItem>
+              <MenubarItem className="hover:bg-[#db4a2b] px-2 py-1 rounded-md transition duration-300">
+                Mujeres
+              </MenubarItem>
+              <MenubarItem className="hover:bg-[#db4a2b] px-2 py-1 rounded-md transition duration-300">
+                Accesorios
+              </MenubarItem>
+              <MenubarItem className="hover:bg-[#db4a2b] px-2 py-1 rounded-md transition duration-300">
+                Ofertas
+              </MenubarItem>
             </MenubarContent>
           </MenubarMenu>
 
           {/* Menú 2 */}
           <MenubarMenu>
             <MenubarTrigger className="text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] relative group text-center">
-              Colecciones
+              Comprar por Producto
               <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#db4a2b] transition-all duration-300 group-hover:w-full"></span>
             </MenubarTrigger>
-            <MenubarContent className="mt-2 p-2 bg-black text-white rounded-md border-none w-auto">
-              <MenubarItem>Hombres</MenubarItem>
-              <MenubarItem>Mujeres</MenubarItem>
-              <MenubarItem>Accesorios</MenubarItem>
-              <MenubarItem>Ofertas</MenubarItem>
+            <MenubarContent
+              align="center"
+              sideOffset={10}
+              className="mt-2 p-2 bg-[#141414] text-white rounded-sm border-none w-auto"
+            >
+              <MenubarItem className="hover:bg-[#db4a2b] px-2 py-1 rounded-md transition duration-300">
+                Todos
+              </MenubarItem>
+              <MenubarItem className="hover:bg-[#db4a2b] px-2 py-1 rounded-md transition duration-300">
+                <Link to="/about"> Hoddies</Link>
+               
+              </MenubarItem>
+              <MenubarItem className="hover:bg-[#db4a2b] px-2 py-1 rounded-md transition duration-300">
+                Sacos
+              </MenubarItem>
             </MenubarContent>
           </MenubarMenu>
 
           {/* Menú 3 */}
           <MenubarMenu>
             <MenubarTrigger className="text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] relative group text-center">
-              Categoría
+              News
               <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#db4a2b] transition-all duration-300 group-hover:w-full"></span>
             </MenubarTrigger>
-            <MenubarContent className="mt-2 p-2 bg-black text-white rounded-md border-none w-auto">
-              <MenubarItem>Hombres</MenubarItem>
-              <MenubarItem>Mujeres</MenubarItem>
-              <MenubarItem>Accesorios</MenubarItem>
-              <MenubarItem>Ofertas</MenubarItem>
+            <MenubarContent
+              align="center"
+              sideOffset={10}
+              className="mt-2 p-2 bg-[#141414] text-white rounded-sm border-none w-auto"
+            >
+              <MenubarItem className="hover:bg-[#db4a2b] px-2 py-1 rounded-md transition duration-300">
+                Hombres
+              </MenubarItem>
+              <MenubarItem className="hover:bg-[#db4a2b] px-2 py-1 rounded-md transition duration-300">
+                Mujeres
+              </MenubarItem>
+              <MenubarItem className="hover:bg-[#db4a2b] px-2 py-1 rounded-md transition duration-300">
+                Accesorios
+              </MenubarItem>
+              <MenubarItem className="hover:bg-[#db4a2b] px-2 py-1 rounded-md transition duration-300">
+                Ofertas
+              </MenubarItem>
             </MenubarContent>
           </MenubarMenu>
         </Menubar>

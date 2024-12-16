@@ -1,17 +1,19 @@
 import { useState, useEffect } from "react";
-import CustomeNavBar from "../NavBar/custome-NavBar.tsx";
-import Footer from "../Footer/Footer.tsx";
+
+
 import BgImage from "../../assets/bgbig.jpeg";
 
-import PhoneNavbar from "../NavBar/phone-navbar.tsx";
 import Hoodies from "./../Hoodies/Hoodies";
 import Typewriter from "typewriter-effect";
 
 function Home() {
   const [showAnimation, setShowAnimation] = useState(false);
+  const [size, setSize] = useState(null); // Estado para la talla seleccionada
+  const [comments, setComments] = useState(""); // Estado para comentarios
+  const [quantity, setQuantity] = useState(1); // Estado para la cantidad
 
   useEffect(() => {
-    // Mostrar la animación después de 2 segundos
+    // Mostrar la animación después de 300ms
     const timer = setTimeout(() => {
       setShowAnimation(true);
     }, 300);
@@ -19,16 +21,24 @@ function Home() {
     return () => clearTimeout(timer); // Limpiar el temporizador si el componente se desmonta
   }, []);
 
+  const handleAddToCart = () => {
+    alert(`Agregado al carrito:
+Talla: ${size || "No seleccionada"}
+Comentarios: ${comments}
+Cantidad: ${quantity}
+Precio Total: $${160000 * quantity} COP`);
+  };
+
   return (
     <div className="flex flex-col justify-start w-full">
+      {/* Encabezado */}
       <header>
-        <nav>
-          <CustomeNavBar />
-          <PhoneNavbar />
-        </nav>
+       
       </header>
 
+      {/* Contenido Principal */}
       <main>
+        {/* Banner con imagen y animación */}
         <div
           className="relative w-full h-[50vh] md:h-[60vh] bg-white text-[#db4a2b] flex items-center overflow-hidden"
           style={{
@@ -38,25 +48,25 @@ function Home() {
             backgroundRepeat: "no-repeat",
           }}
         >
-          {/* Mask */}
+          {/* Máscara */}
           <div className="absolute inset-0 bg-black/50 z-10"></div>
 
-          {/* Centered Content */}
+          {/* Contenido centrado */}
           <div className="flex flex-col items-center w-full px-4 relative z-20">
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-white drop-shadow-md text-center">
               {showAnimation ? (
                 <Typewriter
                   onInit={(typewriter) => {
                     typewriter
-                      .typeString("Find Your Vibe") // Escribir el texto
+                      .typeString("Find Your Vibe") // Texto animado
                       .callFunction(() => {
-                        // Asegurarse de que el cursor no se muestre en absoluto
-                        typewriter.elements.cursor.style.display = "none";
+                        // Eliminar cursor
+                        
                       })
                       .start();
                   }}
                   options={{
-                    cursor: "", // Elimina el cursor desde el inicio
+                    cursor: "", // Elimina el cursor
                   }}
                 />
               ) : null}
@@ -66,9 +76,16 @@ function Home() {
             </p>
           </div>
         </div>
+
+        {/* Componente de productos */}
         <Hoodies />
+
+     
+     
       </main>
-      <Footer />
+
+      {/* Pie de página */}
+   
     </div>
   );
 }
