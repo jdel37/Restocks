@@ -76,9 +76,9 @@ function HoodieSelector() {
   ];
 
   return (
-    <div className="flex flex-col md:flex-row gap-8 p-6 font-sans mt-20 mr-8">
+    <div className="flex flex-col md:flex-row justify-center items-center gap-8 p-6 font-sans mt-20 mx-4 md:mr-8">
       {/* Left Side: Main image and thumbnails */}
-      <div className="flex-1 relative">
+      <div className="flex-1 relative max-w-xs md:max-w-md">
         <div
           className="flex justify-center relative overflow-hidden group"
           onMouseMove={handleMouseMove}
@@ -91,7 +91,7 @@ function HoodieSelector() {
           <img
             src={mainImage}
             alt={name || "Producto"}
-            className="w-full max-w-md object-cover rounded-md"
+            className="w-full object-cover rounded-md"
           />
           {/* Zoom Window */}
           {showZoom && (
@@ -114,7 +114,7 @@ function HoodieSelector() {
               key={index}
               src={img || "https://via.placeholder.com/80x100"}
               alt={`Thumbnail ${index}`}
-              className="w-20 h-24 border border-gray-300 cursor-pointer hover:border-black"
+              className="w-16 h-20 border border-gray-300 cursor-pointer hover:border-black"
               onClick={() => setMainImage(img || "https://via.placeholder.com/400x500")}
             />
           ))}
@@ -122,17 +122,17 @@ function HoodieSelector() {
       </div>
 
       {/* Right Side: Product Details */}
-      <div className="flex-1 flex flex-col gap-6">
+      <div className="flex-1 flex flex-col gap-6 max-w-xs md:max-w-md">
         {/* Product Name */}
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">
+          <h1 className="text-xl md:text-2xl font-bold text-gray-900">
             {name || "Suéter Con Cremallera"}
           </h1>
           <p className="text-gray-500 mt-1">Cremallera Rib</p>
         </div>
 
         {/* Price */}
-        <p className="text-xl font-semibold text-gray-900">
+        <p className="text-lg md:text-xl font-semibold text-gray-900">
           {price ? `$ ${price}.00 COP` : "$ 160,000.00 COP"}
         </p>
 
@@ -141,7 +141,7 @@ function HoodieSelector() {
           <p className="font-medium text-gray-700 mb-2">
             TALLAS <span className="text-gray-400 ml-1">(Obligatorio)</span>
           </p>
-          <div className="flex gap-4">
+          <div className="flex gap-4 flex-wrap">
             {availableSizes.map(({ size, available }) =>
               available ? (
                 <label
